@@ -1,0 +1,27 @@
+# ===== 依赖与构建产物（可随时重建，绝不进库）=====
+node_modules/
+dist/
+__pycache__/
+*.pyc
+
+# ===== Python 虚拟环境 =====
+.venv/
+venv/
+
+# ===== 密钥与环境配置（安全红线）=====
+.env
+.env.*
+!.env.example
+
+# ===== 日志与临时文件 =====
+*.log
+
+# ===== 编辑器与操作系统垃圾 =====
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ===== 后续阶段会生成的本地产物 =====
+chroma_db/
+uploads/
