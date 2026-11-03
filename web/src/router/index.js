@@ -11,13 +11,13 @@ const routes = [
     redirect: '/home',                              // 访问 / 自动跳 /home
     children: [
       { path: 'home',            component: () => import('@/views/Home.vue'),             meta: { title: '首页',       requiresAuth: true } },
-      { path: 'labs',            component: () => import('@/views/LabList.vue'),          meta: { title: '实验室列表', requiresAuth: true } },
-      { path: 'labs/:id',        component: () => import('@/views/LabDetail.vue'),        meta: { title: '实验室详情', requiresAuth: true } },
+      { path: 'labs',            component: () => import('@/views/LabList.vue'),          meta: { title: '检测室列表', requiresAuth: true } },
+      { path: 'labs/:id',        component: () => import('@/views/LabDetail.vue'),        meta: { title: '检测室详情', requiresAuth: true } },
       { path: 'my-reservations', component: () => import('@/views/MyReservations.vue'),   meta: { title: '我的预约',   requiresAuth: true } },
       { path: 'profile',         component: () => import('@/views/Profile.vue'),          meta: { title: '个人中心',   requiresAuth: true } },
-      { path: 'ai',              component: () => import('@/views/AiChat.vue'),           meta: { title: 'AI 助手',    requiresAuth: true } },
+      { path: 'ai',              component: () => import('@/views/AiChat.vue'),           meta: { title: '检验助手',   requiresAuth: true } },
       { path: 'admin/users',     component: () => import('@/views/admin/UserManage.vue'),  meta: { title: '用户管理',   requiresAuth: true, requiresAdmin: true } },
-      { path: 'admin/labs',      component: () => import('@/views/admin/LabManage.vue'),   meta: { title: '实验室管理', requiresAuth: true, requiresAdmin: true } },
+      { path: 'admin/labs',      component: () => import('@/views/admin/LabManage.vue'),   meta: { title: '检测室管理', requiresAuth: true, requiresAdmin: true } },
       { path: 'admin/reviews',   component: () => import('@/views/admin/ReviewManage.vue'), meta: { title: '预约审核', requiresAuth: true, requiresAdmin: true } },
     ],
   },

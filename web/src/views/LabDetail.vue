@@ -45,7 +45,7 @@ async function submit() {
 
 <template>
   <div v-loading="loading">
-    <el-page-header content="实验室详情" @back="router.push('/labs')" />
+    <el-page-header content="检测室详情" @back="router.push('/labs')" />
 
     <template v-if="lab">
       <el-card style="margin-top: 16px">
@@ -60,13 +60,13 @@ async function submit() {
       </el-card>
 
       <el-card style="margin-top: 16px">
-        <h4>预约该实验室</h4>
+        <h4>预约该检测室</h4>
         <el-alert
           v-if="lab.status !== '开放中'"
           type="warning"
           show-icon
           :closable="false"
-          title="实验室维护中，暂不开放预约"
+          title="检测室维护中，暂不开放预约"
           style="margin-bottom: 12px"
         />
         <el-form :model="form" label-width="70px" :disabled="lab.status !== '开放中'">
@@ -80,7 +80,7 @@ async function submit() {
             <el-time-picker v-model="form.end_time" format="HH:mm" value-format="HH:mm" style="width: 100%" />
           </el-form-item>
           <el-form-item label="用途">
-            <el-input v-model="form.purpose" placeholder="例如：课程设计调试" />
+            <el-input v-model="form.purpose" placeholder="例如：批次样品核酸复核" />
           </el-form-item>
           <el-button type="primary" :loading="submitting" @click="submit">提交预约</el-button>
         </el-form>
@@ -94,7 +94,7 @@ async function submit() {
           <el-table-column prop="total" label="总数" width="80" />
           <el-table-column prop="available" label="可用" width="80" />
         </el-table>
-        <el-empty v-if="!equipment.length" description="该实验室暂无设备" />
+        <el-empty v-if="!equipment.length" description="该检测室暂无设备" />
       </el-card>
     </template>
   </div>

@@ -36,7 +36,7 @@ async function onSubmit() {
 <template>
   <div class="login-page">
     <el-card class="login-card">
-      <h2 class="title">智能实验室预约系统</h2>
+      <h2 class="title">医药检测实验室预约系统</h2>
       <el-form ref="formRef" :model="form" :rules="rules" @keyup.enter="onSubmit">
         <el-form-item prop="username">
           <el-input v-model="form.username" placeholder="用户名" />

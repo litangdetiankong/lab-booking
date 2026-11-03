@@ -31,9 +31,9 @@ def create(db, user_id: int, lab_id: int, d, start, end, purpose: str) -> Reserv
     """三层校验全部收在这里——api 层只管调它，前端只管展示错误"""
     lab = db.get(Lab, lab_id)
     if not lab:
-        raise BusinessError(3101, "实验室不存在")
+        raise BusinessError(3101, "检测室不存在")
     if lab.status != "开放中":
-        raise BusinessError(3102, "实验室维护中，暂不开放预约")
+        raise BusinessError(3102, "检测室维护中，暂不开放预约")
     d = datetime.strptime(d, "%Y-%m-%d").date() if isinstance(d, str) else d
     start_t = datetime.strptime(start, "%H:%M").time() if isinstance(start, str) else start
     end_t = datetime.strptime(end, "%H:%M").time() if isinstance(end, str) else end

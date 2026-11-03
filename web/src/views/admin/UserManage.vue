@@ -83,7 +83,9 @@ onMounted(load)
       <el-table-column type="index" label="id" width="70" :index="rowNo" />
       <el-table-column prop="username" label="用户名" />
       <el-table-column prop="nickname" label="昵称" />
-      <el-table-column prop="role" label="角色" width="100" />
+      <el-table-column label="角色" width="100">
+        <template #default="{ row }">{{ row.role === 'admin' ? '管理员' : '检测员' }}</template>
+      </el-table-column>
       <el-table-column label="操作" width="250">
         <template #default="{ row }">
           <el-button size="small" @click="openEdit(row)">编辑</el-button>
@@ -107,7 +109,7 @@ onMounted(load)
         <el-form-item label="昵称" prop="nickname"><el-input v-model="form.nickname" /></el-form-item>
         <el-form-item label="角色" prop="role">
           <el-select v-model="form.role">
-            <el-option label="员工" value="employee" />
+            <el-option label="检测员" value="employee" />
             <el-option label="管理员" value="admin" />
           </el-select>
         </el-form-item>

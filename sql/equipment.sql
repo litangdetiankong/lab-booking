@@ -12,9 +12,13 @@ CREATE TABLE IF NOT EXISTS equipment (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='设备表';
 
 INSERT INTO equipment (lab_id, name, model, total, available) VALUES
-(1, '深度学习工作站', 'RTX4090 / i9 / 128G', 8, 6),
-(2, '六轴机械臂',     'UR5e',                2, 2),
-(2, '移动机器人平台', 'TurtleBot4',          3, 3),
-(3, 'GPU 服务器',     '4×A100',              2, 1),
-(4, '开发工位',       '标准配置',             40, 40),
-(5, '核心路由器',     'Cisco ISR4451',       4, 4);
+(1, '荧光定量 PCR 仪',     'ABI QuantStudio 5',  4, 3),
+(1, '全自动核酸提取仪',     'KingFisher Flex',    2, 2),
+(2, 'II 级生物安全柜',      'BSC-1500IIA2',       2, 2),
+(2, '恒温培养箱',           'SPX-250',            6, 5),
+(3, '高效液相色谱仪',       'Agilent 1260',       3, 2),
+(3, '气相色谱-质谱联用仪',  'GCMS-QP2020',        1, 1),
+(4, '化学发光免疫分析仪',   'CL-6000i',           2, 2),
+(4, '酶标仪',               'Multiskan FC',       4, 4),
+(5, '低温离心机',           'Centrifuge 5810R',   2, 0),
+(5, '样本分装台',           '生物安全型',          4, 0);

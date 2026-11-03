@@ -21,16 +21,16 @@ function logout() {
     <el-aside width="220px">
       <el-menu router :default-active="route.path">
         <el-menu-item index="/home">首页</el-menu-item>
-        <el-menu-item index="/labs">实验室列表</el-menu-item>
+        <el-menu-item index="/labs">检测室列表</el-menu-item>
         <el-menu-item index="/my-reservations">我的预约</el-menu-item>
         <!-- 管理菜单：三个菜单项共用一个 v-if，必须用 <template> 包起来——
              el-menu 的直接孩子要能当"菜单"解析，条件就挂不住 -->
         <template v-if="userStore.role === 'admin'">
           <el-menu-item index="/admin/users">用户管理</el-menu-item>
-          <el-menu-item index="/admin/labs">实验室管理</el-menu-item>
+          <el-menu-item index="/admin/labs">检测室管理</el-menu-item>
           <el-menu-item index="/admin/reviews">预约审核</el-menu-item>
         </template>
-        <el-menu-item index="/ai">AI 助手</el-menu-item>
+        <el-menu-item index="/ai">检验助手</el-menu-item>
       </el-menu>
     </el-aside>
     <el-container>

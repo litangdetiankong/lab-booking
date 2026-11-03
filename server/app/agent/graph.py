@@ -19,8 +19,8 @@ REQUIRED_FIELDS = ("date", "start_time", "end_time", "people")
 FIELD_NAMES = {"date": "日期", "start_time": "开始时间", "end_time": "结束时间", "people": "人数"}
 
 CLASSIFY_PROMPT = """判断用户最新一句话的目的，只输出一个词：
-book（想预约实验室，或正在补充日期、时间、人数、实验室偏好）
-qa（问制度、规则、设备、实验室信息，或其他与新建预约无关的问题）"""
+book（想预约检测室，或正在补充日期、时间、人数、检测室偏好）
+qa（问制度、生物安全、仪器、检测室信息，或其他与新建预约无关的问题）"""
 
 INTENT_PROMPT = """判断用户最新回复的意图，只输出一个词：
 confirm（确认下单）/ modify（要改需求）/ cancel（不约了）。
@@ -230,8 +230,8 @@ def ask_clarify(state: AgentState) -> dict:
     missing = _missing(state)
     hint = "、".join(FIELD_NAMES[key] for key in missing)
     response = llm.invoke([
-        {"role": "system", "content": "你是实验室预约助手。用一句话自然地向用户追问缺少的信息，不要罗列技术字段名。"},
-        {"role": "user", "content": f"用户想预约实验室，还缺少：{hint}。请生成追问。"},
+        {"role": "system", "content": "你是医药检测实验室预约助手。用一句话自然地向用户追问缺少的信息，不要罗列技术字段名。"},
+        {"role": "user", "content": f"用户想预约检测室，还缺少：{hint}。请生成追问。"},
     ])
     return {"messages": [response]}
 
@@ -250,7 +250,7 @@ def search_labs_node(state: AgentState) -> dict:
         except (KeyError, TypeError, ValueError):
             return {
                 "candidates": [],
-                "messages": [AIMessage(content="还需要知道大概人数，才能筛选坐得下的实验室。")],
+                "messages": [AIMessage(content="还需要知道大概人数，才能筛选坐得下的检测室。")],
             }
         labs = lab_service.list_labs(
             db,
@@ -266,7 +266,7 @@ def search_labs_node(state: AgentState) -> dict:
             return {
                 "candidates": [],
                 "proposal": "",
-                "messages": [AIMessage(content="没有找到符合条件的开放实验室，可以换个时间、人数或偏好再试。")],
+                "messages": [AIMessage(content="没有找到符合条件的开放检测室，可以换个时间、人数或偏好再试。")],
             }
         return {"candidates": candidates}
     finally:
@@ -282,7 +282,7 @@ def propose(state: AgentState) -> dict:
     catalog = _catalog(state.get("candidates") or [])
     response = llm.invoke([
         {"role": "system", "content":
-            "你是预约助手。根据候选实验室和用户需求给出推荐。"
+            "你是医药检测预约助手。根据候选检测室和用户需求给出推荐。"
             "候选前面的序号就是用户要回复的序号，请沿用这些序号和名称，不要另编编号。"
             "最后请用户回复序号确认。"},
         {"role": "user", "content":
@@ -337,7 +337,7 @@ def create_reservation(state: AgentState) -> dict:
             d=booking["date"],
             start=booking["start_time"],
             end=booking["end_time"],
-            purpose="AI 助手代预约",
+            purpose="检验助手代预约",
         )
         return {
             "messages": [AIMessage(content=f"预约成功！单号 {reservation.id}，状态：待审核。")],

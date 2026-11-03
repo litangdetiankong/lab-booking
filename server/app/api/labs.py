@@ -44,7 +44,7 @@ def create_lab(data: LabIn, db: Session = Depends(get_db)):
 def update_lab(lab_id: int, data: LabIn, db: Session = Depends(get_db)):
     lab = lab_service.update_lab(db, lab_id, data.model_dump())
     if not lab:
-        raise BusinessError(4101, "实验室不存在")
+        raise BusinessError(4101, "检测室不存在")
     return ok({"id": lab.id})
 
 @router.delete("/{lab_id}", dependencies=[Depends(require_admin)])
@@ -81,7 +81,7 @@ def get_lab_detail(lab_id: int, user: User = Depends(get_current_user),
                    db: Session = Depends(get_db)):
     lab = lab_service.get_lab(db, lab_id)
     if not lab:
-        raise BusinessError(4101, "实验室不存在")
+        raise BusinessError(4101, "检测室不存在")
     return ok({"id": lab.id, "name": lab.name, "description": lab.description,
                "location": lab.location, "capacity": lab.capacity,
                "open_time_start": lab.open_time_start.strftime("%H:%M"),

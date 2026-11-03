@@ -34,7 +34,7 @@ onMounted(load)
   <div>
     <el-table :data="list" v-loading="loading">
       <el-table-column type="index" label="id" width="70" />
-      <el-table-column prop="lab_name" label="实验室" />
+      <el-table-column prop="lab_name" label="检测室" />
       <el-table-column prop="date" label="日期" width="110" />
       <el-table-column label="时段" width="130">
         <template #default="{ row }">{{ row.start_time.slice(0, 5) }} - {{ row.end_time.slice(0, 5) }}</template>

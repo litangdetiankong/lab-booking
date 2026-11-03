@@ -45,8 +45,8 @@ def update_lab(db, lab_id: int, data: dict) -> Lab | None:
 def delete_lab(db, lab_id: int) -> None:
     lab = db.get(Lab, lab_id)
     if not lab:
-        raise BusinessError(4101, "实验室不存在")
+        raise BusinessError(4101, "检测室不存在")
     if db.query(Reservation).filter(Reservation.lab_id == lab_id).count():
-        raise BusinessError(4103, "该实验室存在预约记录，无法删除")
+        raise BusinessError(4103, "该检测室存在预约记录，无法删除")
     db.delete(lab)                  # 设备随 FK 的 CASCADE 一起删
     db.commit()

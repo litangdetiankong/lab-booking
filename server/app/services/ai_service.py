@@ -13,7 +13,7 @@ def chat(messages: list[dict]) -> str:
     system = SYSTEM_PROMPT
     if hits:
         context = "\n---\n".join(hits)
-        system += (f"\n\n以下是公司制度的相关片段，回答时优先依据它们并注明依据；"
+        system += (f"\n\n以下是公司检测管理制度的相关片段，回答时优先依据它们并注明依据；"
                    f"片段不足以回答时，明确告知用户你不知道：\n{context}")
 
     msgs = [{"role": "system", "content": system}] + messages

@@ -32,7 +32,7 @@ const NODE_TEXT = {
   extract_info: '正在理解需求',
   ask_clarify: '正在向你确认信息',
   revise: '正在按新需求调整',
-  search_labs: '正在查询实验室',
+  search_labs: '正在查询检测室',
   propose: '正在生成推荐方案',
   cancel_booking: '正在取消本次预约',
   create_reservation: '正在创建预约',
@@ -69,7 +69,7 @@ async function send() {
       <el-button size="small" @click="clearChat">清空对话</el-button>
     </div>
     <div class="box" ref="boxRef">
-      <el-empty v-if="!messages.length" description="试试：帮我预约明天下午的实验室" />
+      <el-empty v-if="!messages.length" description="试试：帮我预约明天下午的分子检测室，4 个人" />
       <div v-for="(m, i) in messages" :key="i" class="row" :class="m.role">
         <div class="msg">
           <div v-for="(step, si) in m.steps || []" :key="si" class="step-tag">⚡ {{ step }}</div>
@@ -78,7 +78,7 @@ async function send() {
       </div>
     </div>
     <div class="input-bar">
-      <el-input v-model="input" placeholder="试试：帮我预约明天下午的实验室" @keyup.enter="send" :disabled="streaming" />
+      <el-input v-model="input" placeholder="试试：帮我预约明天下午的分子检测室，4 个人" @keyup.enter="send" :disabled="streaming" />
       <el-button type="primary" :loading="streaming" @click="send">发送</el-button>
     </div>
   </div>

@@ -23,7 +23,7 @@ const labFormRef = ref()
 const labForm = reactive({ id: null, name: '', description: '', location: '',
                            capacity: 10, open_time_start: '09:00', open_time_end: '21:00', status: '开放中' })
 const labRules = {
-  name: [{ required: true, message: '请输入实验室名称', trigger: 'blur' }],
+  name: [{ required: true, message: '请输入检测室名称', trigger: 'blur' }],
   open_time_start: [{ required: true, message: '请选择开放开始时间', trigger: 'change' }],
   open_time_end: [{ required: true, message: '请选择开放结束时间', trigger: 'change' }],
 }
@@ -118,7 +118,7 @@ async function removeEq(eq) {
   <div>
     <el-input v-model="keyword" placeholder="名称/位置/描述" style="width: 220px" clearable @keyup.enter="load" />
     <el-button type="primary" @click="load">搜索</el-button>
-    <el-button type="success" @click="openAdd">新增实验室</el-button>
+    <el-button type="success" @click="openAdd">新增检测室</el-button>
 
     <el-table :data="list" v-loading="loading" style="margin-top: 12px">
       <el-table-column type="index" label="id" width="70" />
@@ -139,7 +139,7 @@ async function removeEq(eq) {
       </el-table-column>
     </el-table>
 
-    <el-dialog v-model="labDialogVisible" :title="isEditLab ? '编辑实验室' : '新增实验室'" width="520px">
+    <el-dialog v-model="labDialogVisible" :title="isEditLab ? '编辑检测室' : '新增检测室'" width="520px">
       <el-form ref="labFormRef" :model="labForm" :rules="labRules" label-width="90px">
         <el-form-item label="名称" prop="name"><el-input v-model="labForm.name" /></el-form-item>
         <el-form-item label="位置"><el-input v-model="labForm.location" /></el-form-item>

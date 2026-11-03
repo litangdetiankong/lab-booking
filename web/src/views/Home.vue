@@ -16,13 +16,13 @@ onMounted(async () => {
 const cards = [
   { key: 'my_total',  label: '我的预约总数',   path: '/my-reservations' },
   { key: 'upcoming',  label: '即将开始的预约', path: '/my-reservations' },
-  { key: 'lab_total', label: '实验室总数',     path: '/labs' },
+  { key: 'lab_total', label: '检测室总数',     path: '/labs' },
 ]
 const entries = [
-  { label: '去预约',   desc: '浏览开放中的实验室', path: '/labs' },
+  { label: '去预约',   desc: '浏览开放中的检测室', path: '/labs' },
   { label: '我的预约', desc: '查看与取消我的预约', path: '/my-reservations' },
   ...(isAdmin ? [{ label: '预约审核', desc: '处理待审核预约单', path: '/admin/reviews' }] : []),
-  { label: 'AI 助手',  desc: '一句话预约实验室',   path: '/ai' },
+  { label: '检验助手', desc: '一句话预约检测室',   path: '/ai' },
 ]
 </script>
 

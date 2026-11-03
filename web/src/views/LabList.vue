@@ -29,6 +29,6 @@ onMounted(load)
         </el-card>
       </el-col>
     </el-row>
-    <el-empty v-if="!loading && !list.length" description="没有匹配的实验室" />
+    <el-empty v-if="!loading && !list.length" description="没有匹配的检测室" />
   </div>
 </template>
