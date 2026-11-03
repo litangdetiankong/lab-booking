@@ -98,14 +98,3 @@ python -m scripts.build_knowledge
 ```
 
 脚本会把文档切分后写入项目根目录的 `chroma_db/`。首次运行会下载中文向量模型，需要能访问 Hugging Face 或镜像。重建完成后重启后端，助手才会使用新内容。
-
-## 更新到 GitHub
-
-在项目根目录执行。提交前确认 `git status` 中没有 `.env`。
-
-```powershell
-git add .
-git status
-git commit -m "说明这次改了什么"
-git push
-```
